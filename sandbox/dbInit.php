@@ -1,5 +1,9 @@
 <?php
 
+	function dbIsInstalled(){
+		return !!mysql_query("select * from `Files`");
+	}
+
 	$con = mysql_connect("localhost","root", "");
 	if (!$con)
 	  {
@@ -9,22 +13,24 @@
 	else{
 		mysql_select_db("rutfilemanager", $con);
 
-		//are the dbs set up?
-		$createQuery = "CREATE TABLE IF NOT EXISTS Images(
-						id int(5) unsigned NOT NULL AUTO_INCREMENT,
-						imageFileName varchar(50) NOT NULL,
-						PRIMARY KEY (id)
-						)";
+		//install db
+		if(!dbIsInstalled()){
 
-		mysql_query($createQuery, $con);
-	}
+			$tablesSQL = file_get_contents('dbCreateTables.sql');
+			$fileLength = strlen($tablesSQL);
+			$pos = 0;
+			while ($pos < $fileLength){
+				$newPos = strpos($tablesSQL, ';', $pos)+1;
+				$query = substr($tablesSQL, $pos, ($newPos-$pos));
 
-	function newWord($imageFileName){
+				mysql_query($query);
 
-		$insertQuery = "INSERT IGNORE INTO Images VALUES
-						('".$imageFileName."')";
+				$pos = $newPos;
+			}
 
-		mysql_query($insertQuery);			
+		}
+
+		//mysql_query($createQuery, $con);
 	}
 
 ?>
