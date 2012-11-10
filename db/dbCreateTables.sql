@@ -66,14 +66,24 @@ CREATE TABLE IF NOT EXISTS File_comments(
 	comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	user_id int(2) UNSIGNED NOT NULL,
 
+	PRIMARY KEY (id),
 	FOREIGN KEY (user_id) REFERENCES Users (id)
 );
 
-CREATE TABLE IF NOT EXISTS About(
+CREATE TABLE IF NOT EXISTS Comments_about_files(
 	comment_id int(5) UNSIGNED NOT NULL,
 	file_id int(5) UNSIGNED NOT NULL,
 
 	PRIMARY KEY (comment_id, file_id),
 	FOREIGN KEY (comment_id) REFERENCES File_comments (id),
 	FOREIGN KEY (file_id) REFERENCES Files (id)
+);
+
+CREATE TABLE IF NOT EXISTS Words(
+	file_id int(5) UNSIGNED NOT NULL,
+	pos_in_file int(5) UNSIGNED NOT NULL,
+	word varchar(30) NOT NULL,
+
+	PRIMARY KEY (file_id, pos_in_file),
+	FOREIGN KEY (file_id) REFERENCES Files (id)	
 );
