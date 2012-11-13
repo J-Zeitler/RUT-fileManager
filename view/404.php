@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Page Not Found :(</title>
+        <title>Sidan hittades inte</title>
         <style>
             ::-moz-selection {
                 background: #b3d4fc;
@@ -141,12 +141,12 @@
     </head>
     <body>
         <div class="container">
-            <h1>Not found <span>:(</span></h1>
-            <p>Sorry, but the page you were trying to view does not exist.</p>
-            <p>It looks like this was the result of either:</p>
+            <h1>Sidan existerar inte</h1>
+            <p>Tyvärr så finns inte sidan du försöker visa</p>
+            <p>Detta kan vara på grund av:</p>
             <ul>
-                <li>a mistyped address</li>
-                <li>an out-of-date link</li>
+                <li>Ett stavfel i länkadressen</li>
+                <li>En länk till en sida som tagits bort.</li>
             </ul>
             <script>
                 var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;

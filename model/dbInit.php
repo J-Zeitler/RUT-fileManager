@@ -1,6 +1,8 @@
 <?php
 
-	function dbIsInstalled($create_query){
+class dbInit{
+
+	private function dbIsInstalled($create_query){
 
 		$table_list = mysql_query('SHOW TABLES');
 		$actual_table_count = mysql_num_rows( $table_list );
@@ -10,7 +12,7 @@
 		return ($desired_table_count == $actual_table_count);
 	}
 
-	function dbConnect(){
+	public function dbConnect(){
 
 		$con = mysql_connect("localhost","root", "");
 		if (!$con)
@@ -43,5 +45,4 @@
 			}
 		}
 	}
-
-?>
+}
