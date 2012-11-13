@@ -12,8 +12,10 @@ class Search_Model extends Model
 	}
 
 	public function run($term){
-		$sth = $this->db->prepare("SELECT * FROM users WHERE id=$term");
-		$sth;
+		$stm = $this->db->prepare("SELECT * FROM users WHERE id=$term");
+		$stm->execute();
 
+		$data = $stm->fetchAll();
+		print_r($data);
 	}
 }

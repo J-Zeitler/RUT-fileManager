@@ -1,5 +1,6 @@
 <?php
-	$dbHost = 'localhost';
-	$dbName = 'rutfilemanager';
-	$dbUser = 'root';
-	$dbPassword = '';
+$dbType = 'mysql';
+$dbHost = 'localhost';
+$dbName = 'rutfilemanager';
+$dbUser = 'root';
+$dbPassword = '';

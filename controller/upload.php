@@ -15,7 +15,7 @@ class Upload extends Controller
 		$this->view->render('upload_view');
 	}
 
-	public function upload_files($term = false){
+	public function files($term = false){
 		$this->model->run();
 		
 		$this->view->render('upload_view');

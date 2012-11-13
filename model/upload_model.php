@@ -35,7 +35,7 @@ class Upload_Model extends Model
 
 		// $query = 'INSERT INTO FILES VALUES';
 
-		// $sth = $this->db->prepare($query);
-		// $sth->execute();
+		// $stm = $this->db->prepare($query);
+		// $stm->execute();
 	}
 }
