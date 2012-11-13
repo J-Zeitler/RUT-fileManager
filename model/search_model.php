@@ -10,4 +10,10 @@ class Search_Model extends Model
 	{
 		parent::__construct();
 	}
+
+	public function run($term){
+		$sth = $this->db->prepare("SELECT * FROM users WHERE id=$term");
+		$sth;
+
+	}
 }

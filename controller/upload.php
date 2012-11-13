@@ -16,9 +16,7 @@ class Upload extends Controller
 	}
 
 	public function upload_files($term = false){
-		require 'model/upload_model.php';
-		$model = new Upload_Model();
-		$model->run();
+		$this->model->run();
 		
 		$this->view->render('upload_view');
 	}

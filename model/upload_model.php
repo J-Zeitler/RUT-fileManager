@@ -12,11 +12,30 @@ class Upload_Model extends Model
 	}
 
 	public function run(){
-		echo 'hej';
-		$sth = $this->db->prepare("INSERT INTO users VALUES
-			('', 'annananvändare')");
-		$sth->execute();
+		if($this->checkFiles()){
+			if($this->loadToServer()){
+				$this->updateDB();
+			}
+		}
 	}
 
-	
+	private function checkFiles(){
+		echo 'files checked<br/>';
+		return true;
+	}
+
+	private function loadToServer(){
+		echo 'files transfered to server<br/>';
+		return true;
+	}
+
+	private function updateDB($values = null){
+		echo 'database updated';
+		return true;
+
+		// $query = 'INSERT INTO FILES VALUES';
+
+		// $sth = $this->db->prepare($query);
+		// $sth->execute();
+	}
 }

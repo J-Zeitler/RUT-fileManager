@@ -15,10 +15,9 @@ class Search extends Controller
 		$this->view->render('search_view');
 	}
 
-	public function search_for($term = false){
-		require 'model/search_model.php';
-		$model = new Search_Model();
-		
+	public function search_for($term = 1){
+		$this->model->run($term);
+
 		$this->view->render('search_view');
 	}
 }
