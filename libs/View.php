@@ -1,17 +1,19 @@
 <?php
 
 /**
-*  Main View
+*  Main View class
 */
 class View
 {
 	
 	function __construct()
 	{
-		echo 'Main view was constructed<br/>';
+		
 	}
 
 	public function render($name){
+		require 'view/header.php';
 		require 'view/' . $name . '.php';
+		require 'view/footer.php';
 	}
 }

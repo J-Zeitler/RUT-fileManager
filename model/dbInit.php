@@ -2,19 +2,11 @@
 
 class dbInit{
 
-	private function dbIsInstalled($create_query){
+	function __construct(){
 
-		$table_list = mysql_query('SHOW TABLES');
-		$actual_table_count = mysql_num_rows( $table_list );
+		require 'config/database.php';
 
-		$desired_table_count = substr_count($create_query, 'CREATE TABLE');
-
-		return ($desired_table_count == $actual_table_count);
-	}
-
-	public function dbConnect(){
-
-		$con = mysql_connect("localhost","root", "");
+		$con = mysql_connect($dbHost, $dbUser, $dbPassword);
 		if (!$con)
 		  {
 		  	die('Could not connect: ' . mysql_error());
@@ -22,12 +14,12 @@ class dbInit{
 
 		else{
 
-			$db = 'rutfilemanager';
+			$db = $dbName;
 			mysql_select_db($db, $con);
 
 			//install db
-			$tablesSQL = file_get_contents('dbCreateTables.sql');
-			if(!dbIsInstalled($tablesSQL)){
+			$tablesSQL = file_get_contents('model/dbCreateTables.sql');
+			if(!$this->dbIsInstalled($tablesSQL)){
 
 				echo 'db is missing tables';
 				$fileLength = strlen($tablesSQL);
@@ -44,5 +36,17 @@ class dbInit{
 
 			}
 		}
+
+		mysql_close();
+	}
+
+	private function dbIsInstalled($create_query){
+
+		$table_list = mysql_query('SHOW TABLES');
+		$actual_table_count = mysql_num_rows( $table_list );
+
+		$desired_table_count = substr_count($create_query, 'CREATE TABLE');
+
+		return ($desired_table_count == $actual_table_count);
 	}
 }

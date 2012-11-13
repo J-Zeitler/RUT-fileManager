@@ -1,13 +1,13 @@
 <?php
 
 /**
-*  Main View
+*  Main Model class
 */
 class Model
 {
 	
 	function __construct()
 	{
-		echo 'Main model was constructed<br/>';
+		$this->db = new Database();
 	}
 }

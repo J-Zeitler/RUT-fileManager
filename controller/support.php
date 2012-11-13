@@ -9,6 +9,9 @@ class Support extends Controller
 	function __construct()
 	{
 		parent::__construct();
-		echo 'Hello from Support-controller.<br/>';
+	}
+
+	public function index(){
+		$this->view->render('support_view');
 	}
 }
