@@ -16,6 +16,7 @@ class Search extends Controller
 	}
 
 	public function for_term($term = 1){
+		$term = $_POST['searchTerm'];
 		$this->model->run($term);
 
 		$this->view->render('search_view');
