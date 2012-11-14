@@ -80,10 +80,18 @@ CREATE TABLE IF NOT EXISTS Comments_about_files(
 );
 
 CREATE TABLE IF NOT EXISTS Words(
-	file_id int(5) UNSIGNED NOT NULL,
-	pos_in_file int(5) UNSIGNED NOT NULL,
+	id int(5) UNSIGNED NOT NULL,
 	word varchar(30) NOT NULL,
 
-	PRIMARY KEY (file_id, pos_in_file),
-	FOREIGN KEY (file_id) REFERENCES Files (id)	
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS Words_in_files(
+	word_id int(5) UNSIGNED NOT NULL,
+	file_id int(5) UNSIGNED NOT NULL,
+	occurrences int(5) UNSIGNED NOT NULL,
+
+	PRIMARY KEY (word_id, file_id),
+	FOREIGN KEY (word_id) REFERENCES Words (id),
+	FOREIGN KEY (file_id) REFERENCES Files (id)
 );
