@@ -9,6 +9,6 @@ class Database extends PDO
 	function __construct()
 	{
 		require 'config/database.php';
-		parent::__construct('mysql:host='.$dbHost.';dbname='.$dbName, $dbUser, $dbPassword);
+		parent::__construct('mysql:host='.$dbHost.';dbname='.$dbName.';charset='.$dbCharset, $dbUser, $dbPassword);
 	}
 }

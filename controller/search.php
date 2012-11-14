@@ -15,10 +15,16 @@ class Search extends Controller
 		$this->view->render('search_view');
 	}
 
-	public function for_term($term = 1){
-		$term = $_POST['searchTerm'];
-		$this->model->run($term);
+	/**
+	 * instanciates the search model passing the searchterm to it.
+	 * passes mathcing tuples to the search view
+	 * @param  string $term searchterm
+	 * @return none
+	 */
+	public function for_term($term = null){
+		if($term === null) $term = $_POST['searchTerm'];
+		$data['search_match'] = $this->model->run($term);
 
-		$this->view->render('search_view');
+		$this->view->render('search_view', $data);
 	}
 }

@@ -149,7 +149,27 @@ a, a:visited{
 
 
 
-
+#search-results{
+    margin-top: 10px;
+    list-style-type: none;
+    width: 500px;
+}
+#search-results li{
+    display: block;
+    padding: 10px;
+    background: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+}
+#search-results li:nth-child(odd){
+    background: #efefef;
+}
+#search-results li>span{
+    float: right;
+    padding: 0 1em;
+}
+#search-results li>.file-name{
+    float:left;
+}
 
 
 
