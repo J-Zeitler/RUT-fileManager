@@ -21,8 +21,9 @@ class Search extends Controller
 	 * @param  string $term searchterm
 	 * @return none
 	 */
-	public function for_term($term = null){
-		if($term === null) $term = $_POST['searchTerm'];
+	public function for_term($term = null, $filters = array()){
+		$term = $_POST['searchTerm'];
+
 		$data['search_match'] = $this->model->run($term);
 
 		$this->view->render('search_view', $data);

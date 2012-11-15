@@ -6,15 +6,19 @@
 <?php
 	if(!empty($this->data['search_match'])){
 		$result = $this->data['search_match'];
-		echo '<ul id="search-results">';
+
+		echo '<table id="search-results">
+			<tr><th>Filnamn</th><th>Innehåll</th><th>Kommentarer</th><th>Uppladdad</th><th>Uppladdare</th></tr>';
 		foreach($result as $res){
-			echo '<li>';
-				echo '<a href="#">',$res['fileName'],'</a>';
-				echo '<span>',$res['upload_date'],'</span>';
-				echo '<span>',$res['user_id'],'</span>';
-			echo '</li>';
+			echo '<tr>';
+				echo '<td>',$res['fileName'];
+				echo '<td>',$res['word'];
+				echo '<td>',$res['comment_text'];
+				echo '<td>',$res['upload_date'];
+				echo '<td>',$res['user_id'];
+			echo '</tr>';
 		}
-		echo '</ul>';
+		echo '</table>';
 		
 	}
 	elseif(isset($_POST['submit'])){

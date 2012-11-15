@@ -47,6 +47,6 @@ class dbInit{
 
 		$desired_table_count = substr_count($create_query, 'CREATE TABLE');
 
-		return ($desired_table_count == $actual_table_count);
+		return ($desired_table_count <= $actual_table_count);
 	}
 }

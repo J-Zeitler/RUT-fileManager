@@ -151,24 +151,22 @@ a, a:visited{
 
 #search-results{
     margin-top: 10px;
-    list-style-type: none;
-    width: 500px;
+    width: 720px;
+    border-collapse: collapse;
 }
-#search-results li{
-    display: block;
-    padding: 10px;
+#search-results tr{
     background: #f4f4f4;
     border-bottom: 1px solid #ccc;
 }
-#search-results li:nth-child(odd){
+#search-results th, td{
+    padding: 3px 7px 2px 7px;
+    text-align: left;
+}
+#search-results td{
+    font-size: 0.9em;
+}
+#search-results tr:nth-child(odd){
     background: #efefef;
-}
-#search-results li>span{
-    float: right;
-    padding: 0 1em;
-}
-#search-results li>.file-name{
-    float:left;
 }
 
 
