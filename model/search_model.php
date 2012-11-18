@@ -28,9 +28,9 @@ class Search_Model extends Model
 
 		$this->drop_views();
 
-		echo '<pre>';
-		print_r($result);
-		echo '</pre>';
+		// echo '<pre>';
+		// print_r($result);
+		// echo '</pre>';
 
 		return $result;
 	}

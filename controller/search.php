@@ -22,10 +22,15 @@ class Search extends Controller
 	 * @return none
 	 */
 	public function for_term($term = null, $filters = array()){
+		// $starttime = microtime();
+		
 		$term = $_POST['searchTerm'];
 
 		$data['search_match'] = $this->model->run($term);
 
 		$this->view->render('search_view', $data);
+
+		// $endtime = microtime();
+		// echo ($endtime - $starttime);
 	}
 }

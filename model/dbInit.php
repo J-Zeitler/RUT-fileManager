@@ -21,7 +21,6 @@ class dbInit{
 			$tablesSQL = file_get_contents('model/dbCreateTables.sql');
 			if(!$this->dbIsInstalled($tablesSQL)){
 
-				echo 'db is missing tables';
 				$fileLength = strlen($tablesSQL);
 				$pos = 0;
 				while ($pos < $fileLength){
