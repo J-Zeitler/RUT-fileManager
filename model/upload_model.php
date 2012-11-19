@@ -12,30 +12,26 @@ class Upload_Model extends Model
 	}
 
 	public function run(){
-		if($this->checkFiles()){
-			if($this->loadToServer()){
-				$this->updateDB();
-			}
-		}
-	}
 
-	private function checkFiles(){
-		echo 'files checked<br/>';
-		return true;
+		$this->loadToServer();
+
 	}
 
 	private function loadToServer(){
-		echo 'files transfered to server<br/>';
+
+		$uploaddir = REALPATH.'uploads/';
+
+		$files = $_FILES['userfiles'];
+
+		echo '<pre>';
+		print_r($files);
+		echo '</pre>';
+
+		for($i = 0; $i < count($files['name']); ++$i) {
+			$uploadfile = $uploaddir . basename($files['name'][$i]);
+			move_uploaded_file($files['tmp_name'][$i], $uploadfile);
+		}
+		
 		return true;
-	}
-
-	private function updateDB($values = null){
-		echo 'database updated';
-		return true;
-
-		// $query = 'INSERT INTO FILES VALUES';
-
-		// $stm = $this->db->prepare($query);
-		// $stm->execute();
 	}
 }

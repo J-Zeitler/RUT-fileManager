@@ -5,6 +5,13 @@
 	<title>RUTs filbibliotek</title>
 	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public\css\normalize.css">
 	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public\css\main.css">
+	<?php
+		if(isset($this->js)){
+			foreach($this->js as $js){
+				echo '<script type="text/javascript" src="'.BASEPATH.'public/js/'.$js.'"></script>';
+			}
+		}
+	?>
 </head>
 <body>
 	<header id="main-header">
