@@ -9,28 +9,13 @@ class Search extends Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->data = array();
 	}
 
-	public function index(){
-		$this->view->render('search_view');
-	}
+	public function index($term = null, $filters = array()){
 
-	/**
-	 * instanciates the search model passing the searchterm to it.
-	 * passes mathcing tuples to the search view
-	 * @param  string $term searchterm
-	 * @return none
-	 */
-	public function for_term($term = null, $filters = array()){
-		// $starttime = microtime();
-		
-		$term = $_POST['searchTerm'];
-
-		$data['search_match'] = $this->model->run($term);
-
-		$this->view->render('search_view', $data);
-
-		// $endtime = microtime();
-		// echo ($endtime - $starttime);
+		if(isset($_GET['submit'])) $term = $_GET['searchTerm'];
+		if($term) $this->data['search_match'] = $this->model->run($term);
+		$this->view->render('search_view', $this->data);
 	}
 }

@@ -12,4 +12,4 @@ $app = new Bootstrap();
 
 //install db
 require 'model/dbInit.php';
-	$installer = new dbInit(); //installs db in dbInit constructor if needed
+$installer = new dbInit(); //installs db in dbInit constructor if needed

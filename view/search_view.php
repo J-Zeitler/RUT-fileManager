@@ -1,5 +1,5 @@
 <h4>Hello from the search view!</h4>
-<form action="<?php echo BASEPATH ?>search/for_term" method="post">
+<form action="<?php echo BASEPATH ?>search" method="get">
 	<label for="searchTerm">Sökord: </label><input type="text" name="searchTerm">
 	<input type="submit" name="submit" value="Sök">
 </form>
@@ -21,7 +21,7 @@
 		echo '</table>';
 		
 	}
-	elseif(isset($_POST['submit'])){
+	elseif(isset($_GET['submit'])){
 		echo 'Sökningen gav inga resultat.';
 	}
 ?>
