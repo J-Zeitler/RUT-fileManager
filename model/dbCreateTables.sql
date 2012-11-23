@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS Comments_about_files(
 
 CREATE TABLE IF NOT EXISTS Words(
 	id int(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-	word varchar(30) NOT NULL,
+	word varchar(30) NOT NULL UNIQUE,
 
 	PRIMARY KEY (id)
 );

@@ -59,7 +59,7 @@ class Search_Model extends Model
 					WHERE files.fileName LIKE '$term%'
 						OR matched_words.word LIKE '$term%'
 						OR matched_comments.comment_text LIKE '$term%'
-					GROUP BY files.fileName";
+					GROUP BY files.id";
 
 		return $query;
 	}
