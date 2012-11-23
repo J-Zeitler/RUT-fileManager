@@ -33,6 +33,9 @@ class dbInit{
 					$pos = $newPos;
 				}
 
+				$query = "INSERT INTO users VALUES (null, 'admin')";
+				mysql_query($query);
+
 			}
 		}
 

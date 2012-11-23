@@ -1,6 +1,6 @@
 <?php
 $dbType = 'mysql';
-$dbHost = 'localhost';
+$dbHost = '127.0.0.1';
 $dbName = 'rutfilemanager';
 $dbUser = 'root';
 $dbPassword = '';
