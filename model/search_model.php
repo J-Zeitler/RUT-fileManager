@@ -18,21 +18,22 @@ class Search_Model extends Model
 	 * @return array    $data 		returns an array of matched tuples
 	 */
 	public function run($term, $filters = array()){
+		$terms = explode(' ', trim($term));
 
-		$this->make_views($term);
+		if(!empty($term)){
 
-		$stm = $this->db->prepare($this->search_query($term));
-		$stm->execute();
+			$this->make_views($term);
 
-		$result = $stm->fetchAll();
+			$stm = $this->db->prepare($this->search_query($term));
+			$stm->execute();
 
-		$this->drop_views();
+			$result = $stm->fetchAll();
 
-		// echo '<pre>';
-		// print_r($result);
-		// echo '</pre>';
+			$this->drop_views();
 
-		return $result;
+			return $result;
+		}
+		return array(); //if no valid terms, return empty result
 	}
 
 	/**
@@ -42,11 +43,11 @@ class Search_Model extends Model
 	 */
 	private function search_query($term){
 
-		$query = "	SELECT files.fileName, 
-					GROUP_CONCAT(DISTINCT matched_words.word SEPARATOR ', ') AS 'word', 
-					GROUP_CONCAT(DISTINCT matched_comments.comment_text SEPARATOR ', ') AS 'comment_text', 
+		$query = "	SELECT files.fileName, files.id,
+					GROUP_CONCAT(DISTINCT matched_words.word SEPARATOR ', ') AS 'word',
+					GROUP_CONCAT(DISTINCT matched_comments.comment_text SEPARATOR ', ') AS 'comment_text',
 					files.upload_date, 
-					files.user_id
+					users.name
 					FROM files 
 						LEFT OUTER JOIN comments_about_files 
 						ON files.id = comments_about_files.comment_id
@@ -56,6 +57,8 @@ class Search_Model extends Model
 						ON words_in_files.file_id = files.id
 						LEFT OUTER JOIN matched_words
 						ON matched_words.id = words_in_files.word_id
+						INNER JOIN users
+						ON files.user_id = users.id
 					WHERE files.fileName LIKE '$term%'
 						OR matched_words.word LIKE '$term%'
 						OR matched_comments.comment_text LIKE '$term%'

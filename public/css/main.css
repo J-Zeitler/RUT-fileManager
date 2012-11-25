@@ -19,9 +19,10 @@ textarea {
 }
 
 body {
+    color: #111;
     font-size: 1em;
     line-height: 1.4;
-    font-family: sans-serif;
+    font-family: verdana, arial, helvetica, 'geneva', sans-serif;
 }
 
 /*
@@ -95,48 +96,59 @@ textarea {
    ========================================================================== */
 
 a, a:visited{
-    color: #33a;
+    color: #111;
     text-decoration: none;
 }
+a:hover{
+    color: #9FABB6;
+}
+.wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    text-align: left;
+}
+
+/**
+ * Header styles
+ */
 #main-header{
     z-index: 1;
-    height: 118px;
-    background-color: #ccc;
-    -webkit-box-shadow: 0px 1px 3px #aaa;
-    box-shadow: 0px 1px 3px #aaa;
-    border-bottom: 1px solid #aaa;
+    height: auto;
+    background-color: #f4f4f4;
+    -webkit-box-shadow: 0px 1px 3px #ccc;
+    box-shadow: 0px 1px 5px #ccc;
 }
 #main-header h1{
     padding-top: 35px;
     font-size: 1.4em;
 }
-#page{
-    padding-top: 20px;
-    width: 1000px;
-    margin: 0 auto;
-    height: auto;
-}
-.wrapper {
-    margin: 0 auto 0 auto;
-    width: 1000px;
-    text-align: left;
-}
-#main-nav{
-    z-index: -1;
-    margin-top: -5px;
-    height: 50px;
-    background-color: #ccc;
-    border-bottom: 1px solid #aaa;
-}
 #nav-bar{
     list-style-type: none;
+    padding: 10px 0;
 }
 #nav-bar li{
     float: left;
     display: block;
-    padding: 10px;
+    padding-right: 20px;
 }
 
+/**
+ * Page styles
+ */
+#page{
+    margin: 0 auto;
+    height: auto;
+}
+#page .wrapper{
+}
+#page #content{
+    padding: 20px;
+}
+
+
+/**
+ * Footer styles
+ */
 #footer{
     height: 118px;
     background-color: #ccc;
@@ -147,8 +159,9 @@ a, a:visited{
     padding-top: 20px;
 }
 
-
-
+/**
+ * Search view styles
+ */
 #search-results{
     margin-top: 10px;
     width: 720px;
@@ -178,6 +191,13 @@ a, a:visited{
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
+/**
+ * Search highlight
+ */
+.highlight{
+    font-weight: bold;
+}
 
 /*
  * Image replacement

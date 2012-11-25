@@ -10,5 +10,6 @@ class Database extends PDO
 	{
 		require 'config/database.php';
 		parent::__construct('mysql:host='.$dbHost.';dbname='.$dbName.';charset='.$dbCharset, $dbUser, $dbPassword);
+		$this->exec("SET CHARACTER SET utf8"); //important! charset above not enough ^
 	}
 }

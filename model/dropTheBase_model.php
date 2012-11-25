@@ -23,11 +23,9 @@ class DropTheBase_Model extends Model
 
 	private function recreateDb($dbName){
 
-		$createQuery = "CREATE DATABASE $dbName";
+		$createQuery = "CREATE DATABASE $dbName COLLATE utf8_general_ci";
 		$stm = $this->db->prepare($createQuery);
-		if($stm->execute()){
-			echo 'Base was dropped ...';
-		}
+		$stm->execute();
 
 	}
 }

@@ -14,19 +14,20 @@
 	?>
 </head>
 <body>
-	<header id="main-header">
-		<section class="wrapper">
+	<div id="main-header">
+		<div class="wrapper">
+			
 			<a href="<?php echo BASEPATH; ?>"><h1>RUTs filbibliotek</h1></a>
-		</section>
-	</header>
-	<nav id="main-nav">
-		<section class="wrapper">
-			<ul id="nav-bar">
+			
+			<ul id="nav-bar" class="clearfix">
 				<li><a href="<?php echo BASEPATH; ?>home">Hem</a></li>
 				<li><a href="<?php echo BASEPATH; ?>search">Hitta filer</a></li>
 				<li><a href="<?php echo BASEPATH; ?>upload">Ladda upp filer</a></li>
 				<li><a href="<?php echo BASEPATH; ?>support">Support</a></li>
 			</ul>
-		</section>
-	</nav>
+			
+		</div>
+	</div>
 	<div id="page">
+		<div class="wrapper">
+			<div id="content">

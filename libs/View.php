@@ -17,4 +17,11 @@ class View
 		require 'view/' . $name . '.php';
 		require 'view/footer.php';
 	}
+
+	protected function highlight(&$arr, $needle){
+
+		foreach($arr as $key => $val){
+			$arr[$key] = preg_replace('/^'.$needle.'|\s'.$needle.'/i', "<span class='highlight'>$0</span>", $val);
+		}
+	}
 }
