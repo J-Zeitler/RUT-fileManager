@@ -1,9 +1,9 @@
 <?php $term = $this->data['search_term']; ?>
-
-<h4>Hello from the search view!</h4>
+<div class="box-100">
+<h4 class="box-header">Sök efter filer i biblioteket</h4>
+<div class="box-content">
 <form action="<?php echo BASEPATH ?>search" method="get" accept-charset="utf-8">
-	<label for="searchTerm">Sökord: </label>
-	<input type="text" name="searchTerm" value="<?php echo $term ?>" >
+	<input type="text" name="searchTerm" value="<?php echo $term; ?>" >
 	<input type="submit" name="submit" value="Sök">
 </form>
 <?php
@@ -26,5 +26,8 @@
 		
 	}
 	elseif(isset($_GET['submit'])){
-		echo 'Sökningen gav inga resultat.';
+		echo '<p>Sökningen gav inga resultat.<p>';
 	}
+?>
+</div><!--end of box content -->
+</div><!--end of box -->

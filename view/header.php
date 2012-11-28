@@ -17,17 +17,22 @@
 	<div id="main-header">
 		<div class="wrapper">
 			
-			<a href="<?php echo BASEPATH; ?>"><h1>RUTs filbibliotek</h1></a>
-			
-			<ul id="nav-bar" class="clearfix">
-				<li><a href="<?php echo BASEPATH; ?>home">Hem</a></li>
-				<li><a href="<?php echo BASEPATH; ?>search">Hitta filer</a></li>
-				<li><a href="<?php echo BASEPATH; ?>upload">Ladda upp filer</a></li>
-				<li><a href="<?php echo BASEPATH; ?>support">Support</a></li>
-			</ul>
+			<div id="page-title" class="clearfix">
+			<a href="<?php echo BASEPATH; ?>"><img src = "<?php echo BASEPATH; ?>public/img/R-jonas_version.png" width="80px"/><h1>Rektorsutbildningens filbibliotek</h1></a>
+			</div>
 			
 		</div>
 	</div>
+	
+	<div id="nav-menu">		
+	<ul id="nav-bar" class="wrapper clearfix">
+		<li><a href="<?php echo BASEPATH; ?>home">Hem</a></li>
+		<li><a href="<?php echo BASEPATH; ?>search">Hitta filer</a></li>
+		<li><a href="<?php echo BASEPATH; ?>upload">Ladda upp filer</a></li>
+		<li><a href="<?php echo BASEPATH; ?>support">Support</a></li>
+	</ul>
+	</div>
+	
 	<div id="page">
-		<div class="wrapper">
-			<div id="content">
+		<div class="wrapper clearfix">
+			<div id="content" class="clearfix">
