@@ -60,13 +60,13 @@ class Upload_Model extends Model
 	    $content = preg_replace('/[^a-zåäöéá_ .\+\/\@\n]/s', '', $content);
 	    $content = preg_replace('/\.+/s', '', $content);
 	    $content = preg_split('/[\s,\n\/]+/', $content);
-		
+
 		$uniqueWords = array_unique($content);
 		$occurrences = array_count_values($content);
 
 		//insert words
 		$insertQuery = 'INSERT IGNORE INTO words VALUES ';
-		foreach($uniqueWords as $word) $insertQuery .= "(null,'".$word."'),";
+		foreach($uniqueWords as $word) $insertQuery .= "(null,'".mysql_real_escape_string($word)."'),";
 		$insertQuery = rtrim($insertQuery, ',');
 
 		$stm = $this->db->prepare($insertQuery);
@@ -75,9 +75,7 @@ class Upload_Model extends Model
 		//select inserted rows
 		$selectQuery = "SELECT * FROM words WHERE word IN ('".implode("','", $uniqueWords)."')";
 
-		$stm = $this->db->prepare($selectQuery);
-		$stm->execute();
-		$result = $stm->fetchAll();
+		$result = $this->query($selectQuery);
 		
 		//link to file
 		$insertQuery = 'INSERT IGNORE INTO words_in_files VALUES ';

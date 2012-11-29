@@ -23,7 +23,7 @@ class DropTheBase_Model extends Model
 
 	private function recreateDb($dbName){
 
-		$createQuery = "CREATE DATABASE $dbName COLLATE utf8_general_ci";
+		$createQuery = "CREATE DATABASE $dbName COLLATE utf8_bin";
 		$stm = $this->db->prepare($createQuery);
 		$stm->execute();
 

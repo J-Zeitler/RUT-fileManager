@@ -6,6 +6,7 @@
 	<input type="text" name="searchTerm" value="<?php echo $term; ?>" >
 	<input type="submit" name="submit" value="Sök">
 </form>
+<p>Sök på filnamn, filinnehåll eller taggar</p>
 <?php
 	if(!empty($this->data['search_match'])){
 		$result = $this->data['search_match'];

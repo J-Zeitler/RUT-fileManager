@@ -24,6 +24,7 @@ body {
     color: #111;
     font-size: 1em;
     line-height: 1.4;
+    font-size: 0.9em;
     font-family: verdana, arial, helvetica, 'geneva', sans-serif;
     background: #f7f7f7;
 }
@@ -181,7 +182,7 @@ a:hover{
 }
 #page-title h1{
     font-family: 'Kite One', sans-serif;
-    padding-top: 1.1em;
+    padding-top: 1.4em;
     font-size: 1.6em;
     font-weight: 400;
 }
