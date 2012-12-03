@@ -62,7 +62,8 @@ class Search_Model extends Model
 					WHERE files.fileName LIKE '$term%'
 						OR matched_words.word LIKE '%'
 						OR matched_comments.comment_text LIKE '%'
-					GROUP BY files.id";
+					GROUP BY files.id
+					ORDER BY files.upload_date DESC";
 
 		return $query;
 	}
@@ -74,7 +75,7 @@ class Search_Model extends Model
 					FROM words JOIN words_in_files
 						ON words.id = words_in_files.word_id
 					WHERE words.word REGEXP '^";
-		$query .= implode('|^', $terms)."'";
+		$query .= implode('|^', $terms)."' ORDER BY words_in_files.occurrences DESC";
 
 
 		$this->query($query);
