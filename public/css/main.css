@@ -20,6 +20,9 @@ textarea {
     color: #222;
 }
 
+html{
+    overflow-y: scroll;
+}
 body {
     color: #111;
     font-size: 1em;
@@ -229,6 +232,8 @@ a:hover{
     margin-top: 10px;
     width: 900px;
     border-collapse: collapse;
+    -webkit-box-shadow: 0px 1px 3px #ccc;
+    box-shadow: 0px 1px 3px #ccc;
 }
 #search-results tr{
     background: #f4f4f4;

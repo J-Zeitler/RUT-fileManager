@@ -1,4 +1,7 @@
-<?php $term = $this->data['search_term']; ?>
+<?php 
+	$terms = $this->data['search_term']; 
+	$term = implode(' ', $terms); 
+?>
 <div class="box-100">
 <h4 class="box-header">Sök efter filer i biblioteket</h4>
 <div class="box-content">
@@ -10,7 +13,7 @@
 <?php
 	if(!empty($this->data['search_match'])){
 		$result = $this->data['search_match'];
-		$this->highlight($result, $term);
+		$this->highlight($result, $terms);
 
 		echo '<table id="search-results">
 			<tr><th>Filnamn</th><th>Innehåll</th><th>Kommentarer</th><th>Uppladdad</th><th>Uppladdare</th></tr>';

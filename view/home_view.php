@@ -1,4 +1,4 @@
-<div class="box-100 clearfix">
+<div class="box-100">
 	<h4 class="box-header">Välkommen till RUTs filbibliotek</h4>
 	<div class="box-content"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores sunt possimus voluptates doloremque atque ipsa dolorum alias recusandae nostrum deserunt tempora iusto molestiae at nihil rerum distinctio aut. Recusandae illo.</p></div>
 </div>
@@ -13,7 +13,7 @@
 </div>
 
 <!-- search box -->
-<div class="box-100 clearfix">
+<div class="box-100">
 <h4 class="box-header">Sök efter filer i biblioteket</h4>
 <div class="box-content">
 <form action="<?php echo BASEPATH ?>search" method="get" accept-charset="utf-8">

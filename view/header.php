@@ -3,8 +3,8 @@
 <head>
      <meta charset="utf-8">
 	<title>RUTs filbibliotek</title>
-	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public\css\normalize.css">
-	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public\css\main.css">
+	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public/css/normalize.css">
+	<link rel="stylesheet" href="<?php echo BASEPATH; ?>public/css/main.css">
 	<?php
 		if(isset($this->js)){
 			foreach($this->js as $js){
@@ -18,7 +18,7 @@
 		<div class="wrapper">
 			
 			<div id="page-title" class="clearfix">
-			<a href="<?php echo BASEPATH; ?>"><img src = "<?php echo BASEPATH; ?>public/img/R-jonas_version.png" width="80px"/><h1>Rektorsutbildningens filbibliotek</h1></a>
+			<a href="<?php echo BASEPATH; ?>"><img src = "<?php echo BASEPATH; ?>public/img/R-jonas_version.png"/><h1>Rektorsutbildningens filbibliotek</h1></a>
 			</div>
 			
 		</div>

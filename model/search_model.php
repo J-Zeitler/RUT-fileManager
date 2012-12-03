@@ -15,19 +15,17 @@ class Search_Model extends Model
 	 * and executes the search query.
 	 * @param  string 	$term    	searchterm
 	 * @param  array 	$filters
-	 * @return array    $data 		returns an array of matched tuples
+	 * @return array    $result		returns an array of matched tuples
 	 */
-	public function run($term, $filters = array()){
-		$terms = explode(' ', trim($term));
+	public function run($terms, $filters = array()){
 
-		if(!empty($term)){
+		// $terms = preg_split('/[\s,\+]+/', trim($term));
 
-			$this->make_views($term);
+		if(!empty($terms)){
 
-			$stm = $this->db->prepare($this->search_query($term));
-			$stm->execute();
+			$this->make_views($terms);
 
-			$result = $stm->fetchAll();
+			$result = $this->query($this->search_query($terms));
 
 			$this->drop_views();
 
@@ -37,11 +35,13 @@ class Search_Model extends Model
 	}
 
 	/**
-	 * prepares a query searching for $term in file names
-	 * @param  string 	$term	searchterm
+	 * prepares a query searching for $term in db
+	 * @param  string 	$term
 	 * @return string   $query
 	 */
-	private function search_query($term){
+	private function search_query($terms){
+
+		$term = $terms[0]; //search for filenames only in first term
 
 		$query = "	SELECT files.fileName, files.id,
 					GROUP_CONCAT(DISTINCT matched_words.word SEPARATOR ', ') AS 'word',
@@ -60,41 +60,37 @@ class Search_Model extends Model
 						INNER JOIN users
 						ON files.user_id = users.id
 					WHERE files.fileName LIKE '$term%'
-						OR matched_words.word LIKE '$term%'
-						OR matched_comments.comment_text LIKE '$term%'
+						OR matched_words.word LIKE '%'
+						OR matched_comments.comment_text LIKE '%'
 					GROUP BY files.id";
 
 		return $query;
 	}
 
-	/**
-	 * prepares a query searching for $term in file comments
-	 * @param  string 	$term	searchterm
-	 * @return string   $query
-	 */
-	private function make_views($term){
+	private function make_views($terms){
+
 		$query = "	CREATE VIEW matched_words AS
 					SELECT *
 					FROM words JOIN words_in_files
 						ON words.id = words_in_files.word_id
-					WHERE words.word LIKE '$term%'";
-		$stm = $this->db->prepare($query);
-		$stm->execute();
+					WHERE words.word REGEXP '^";
+		$query .= implode('|^', $terms)."'";
+
+
+		$this->query($query);
 
 		$query = "	CREATE VIEW matched_comments AS
 					SELECT *
 					FROM file_comments JOIN comments_about_files
 						ON file_comments.id = comments_about_files.comment_id
-					WHERE file_comments.comment_text LIKE '$term%'";
-		$stm = $this->db->prepare($query);
-		$stm->execute();
+					WHERE file_comments.comment_text REGEXP '^";
+		$query .= implode('|^', $terms)."'";
+
+		$this->query($query);
 	}
 
 	private function drop_views(){
-		$stm = $this->db->prepare("DROP VIEW matched_words");
-		$stm->execute();
-
-		$stm = $this->db->prepare("DROP VIEW matched_comments");
-		$stm->execute();
+		$this->query("DROP VIEW matched_words");
+		$this->query("DROP VIEW matched_comments");
 	}
 }
