@@ -1,6 +1,6 @@
 <?php 
 	$terms = $this->data['search_term']; 
-	$term = implode(' ', $terms); 
+	$term = is_array($terms) ? implode(' ', $terms) : $terms;
 ?>
 <div class="box-100">
 <h4 class="box-header">Sök efter filer i biblioteket</h4>
