@@ -27,7 +27,7 @@ class Upload_Model extends Model
 		for($i = 0; $i < count($files['name']); ++$i) {
 			$filename = $files['name'][$i];
 			$insertQuery = 'INSERT INTO files VALUES (null,';
-			$insertQuery .= "'".$filename."'".","."null,"."'0',"."'1','".round($files['size'][$i]*$bToKb)."')";
+			$insertQuery .= "'".$filename."'".","."null,"."'0',"."'1','".round($files['size'][$i]*$bToKb)."','1')";
 			
 			$this->db->beginTransaction();
 

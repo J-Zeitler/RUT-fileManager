@@ -33,7 +33,12 @@ class dbInit{
 					$pos = $newPos;
 				}
 
+				//insert user
 				$query = "INSERT INTO users VALUES (null, 'admin')";
+				mysql_query($query);
+
+				//insert file type
+				$query = "INSERT INTO file_types VALUES (null, 'pdf', 'application/pdf', '.pdf', '1')";
 				mysql_query($query);
 
 			}

@@ -5,6 +5,16 @@ CREATE TABLE IF NOT EXISTS Users(
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS File_types(
+	id int(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	type_name varchar(30) NOT NULL,
+	upload_string varchar(30),
+	extension varchar(10) NOT NULL,
+	permitted boolean NOT NULL DEFAULT 1,
+
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE IF NOT EXISTS Files(
 	id int(5) UNSIGNED NOT NULL AUTO_INCREMENT,
 	fileName varchar(50) NOT NULL,
@@ -12,37 +22,11 @@ CREATE TABLE IF NOT EXISTS Files(
 	s_level int(2) UNSIGNED NOT NULL DEFAULT '0',
 	user_id int(2) UNSIGNED NOT NULL,
 	file_size_kb int(5) UNSIGNED NOT NULL,
+	file_type int(3) UNSIGNED NOT NULL,
 
 	PRIMARY KEY (id),
-	FOREIGN KEY (user_id) REFERENCES Users (id)
-);
-
-CREATE TABLE IF NOT EXISTS Images(
-	id int(5) UNSIGNED NOT NULL,
-	height int(5) NOT NULL,
-	width int(5) NOT NULL,
-	image_type varchar(30) NOT NULL,
-
-	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES Files (id)
-);
-
-CREATE TABLE IF NOT EXISTS PowerPoints(
-	id int(5) UNSIGNED NOT NULL,
-	no_of_slides int(4),
-
-
-	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES Files (id)
-);
-
-CREATE TABLE IF NOT EXISTS PDFs(
-	id int(5) UNSIGNED NOT NULL,
-	no_of_pages int(4),
-
-
-	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES Files (id)
+	FOREIGN KEY (user_id) REFERENCES Users (id),
+	FOREIGN KEY (file_type) REFERENCES File_types (id)
 );
 
 CREATE TABLE IF NOT EXISTS Tags(
